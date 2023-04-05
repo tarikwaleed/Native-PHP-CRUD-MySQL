@@ -11,6 +11,12 @@ class User
     {
         $this->pdo = $pdo;
     }
+    public function getAllUsers()
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
     function createUser($email, $password, $image_new_name)
     {
