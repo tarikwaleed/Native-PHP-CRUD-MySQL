@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Login</h1>
-        <form method="POST" action="validatelogin.php" enctype="multipart/form-data">
+        <form method="POST" action="../controllers/validatelogin.php" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="Enter you email">
