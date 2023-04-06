@@ -28,8 +28,8 @@ $root_dir = "/var/www/html";
                 <td><?php echo $user['email']; ?></td>
                 <td><img src="<?php echo str_replace($root_dir, '', $user['image_path']) ?>" alt="User Avatar" width="50"></td>
                 <td>
-                    <a href="#" class="btn btn-primary">Edit</a>
-                    <a href="#" class="btn btn-danger">Delete</a>
+                    <a href="./edituser.php?email=<?php echo $user['email']; ?>" class="btn btn-primary">Edit</a>
+                    <a href="../controllers/deleteuser.php?email=<?php echo $user['email']; ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>

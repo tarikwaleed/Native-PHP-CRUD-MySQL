@@ -42,11 +42,29 @@ class User
         }
     }
 
-    function editUser($id, $email, $password, $image_new_name)
+    function editUser($old_email, $email, $image_new_name)
     {
+        var_dump($email);
+        echo "<br>";
+        var_dump($image_new_name);
+        echo "<br>";
         try {
-            $stmt = $this->pdo->prepare("UPDATE users SET email = ?, password = ?, image_path = ? WHERE id = ?");
-            $stmt->execute([$email, $password, $image_new_name, $id]);
+            $query = "update users  set email=:email, image_path=:image_path where email=:old_email";
+            $stmt = $this->pdo->prepare($query);
+            var_dump($stmt);
+            echo "<br>";
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':old_email', $old_email, PDO::PARAM_STR);
+            $stmt->bindParam(':image_path', $image_new_name, PDO::PARAM_STR);
+            var_dump($stmt);
+
+            $result = $stmt->execute();
+            if (!$result) {
+                $error = $stmt->errorInfo();
+                echo "Error: {$error[2]} ({$error[0]})";
+            } else {
+                var_dump($stmt->rowCount());
+            }
             return true;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -54,11 +72,12 @@ class User
         }
     }
 
-    function deleteUser($id)
+
+    function deleteUser($email)
     {
         try {
-            $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
-            $stmt->execute([$id]);
+            $stmt = $this->pdo->prepare("DELETE FROM users WHERE email = ?");
+            $stmt->execute([$email]);
             return true;
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();

@@ -1,17 +1,11 @@
 <?php
 
 if (isset($_GET["errors"])) {
-    //        var_dump($_GET);
     $errors = json_decode($_GET["errors"], true);
-    //        var_dump($errors);
 }
 if (isset($_GET["old"])) {
-    //        var_dump($_GET);
     $old_data = json_decode($_GET["old"], true);
-    //        var_dump($errors);
 }
-
-
 ?>
 
 
