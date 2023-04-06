@@ -10,6 +10,10 @@ if (isset($_GET["old"])) {
 
 
 <!DOCTYPE html>
+<?php
+require_once '../views/navbar.php';
+require_once '../views/footer.php';
+?>
 <html lang="en">
 
 <head>
@@ -23,10 +27,6 @@ if (isset($_GET["old"])) {
         <h1> Add user </h1>
         <form method="POST" action="../controllers/register.php" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" placeholder="enter your full name">
-            </div>
-            <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" value="<?php if (isset($old_data['email'])) echo $old_data['email']; ?>" name='email' id="exampleInputEmail1" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -36,18 +36,6 @@ if (isset($_GET["old"])) {
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" class="form-control" name='password' value="<?php if (isset($old_data['password'])) echo $old_data['password']; ?>" id="exampleInputPassword1">
                 <span class="text-danger"> <?php if (isset($errors['password'])) echo $errors['password']; ?> </span>
-            </div>
-            <div class="mb-3">
-                <label for="confirm-password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" name="confirm-password" id="confirm-password" aria-describedby="helpId" placeholder="confirm password">
-            </div>
-            <div class="mb-3">
-                <label for="room" class="form-label">Room</label>
-                <select class="form-select form-select-lg" name="room" id="room">
-                    <option selected>Application1</option>
-                    <option value="app2">Application2</option>
-                    <option value="cloud">Cloud</option>
-                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">User Image </label>

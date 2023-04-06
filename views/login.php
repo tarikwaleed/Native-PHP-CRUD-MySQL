@@ -1,3 +1,7 @@
+<?php
+require_once '../views/navbar.php';
+require_once '../views/footer.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
